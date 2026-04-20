@@ -1,7 +1,8 @@
+import 'package:core_services/supabase/supabase_client.dart';
 import 'package:get_it/get_it.dart';
 import 'package:note/note.dart';
 import 'package:core_services/core_services.dart';
-import 'note/presentation/bloc/note_bloc.dart';
+import 'package:practice_notes_app/note/presentation/bloc/note_bloc.dart';
 
 final getIt = GetIt.instance;
 void setupInjector() {
@@ -16,14 +17,14 @@ void setupInjector() {
   getIt.registerLazySingleton(() => GetNotes(getIt<NoteRepositoryImpl>()));
   getIt.registerLazySingleton(() => CreateNote(getIt<NoteRepositoryImpl>()));
   getIt.registerLazySingleton(() => UpdateNote(getIt<NoteRepositoryImpl>()));
-  getIt.registerLazySingleton(() => DeleteNote(getIt<NoteRepositoryImpl>()));
+  //getIt.registerLazySingleton(() => DeleteNote(getIt<NoteRepositoryImpl>()));
   // Register NoteBloc factory
   getIt.registerFactory<NoteBloc>(
     () => NoteBloc(
       getNotes: getIt<GetNotes>(),
       createNote: getIt<CreateNote>(),
       updateNote: getIt<UpdateNote>(),
-      deleteNote: getIt<DeleteNote>(),
+      //deleteNote: getIt<DeleteNote>(),
     ),
   );
 }
